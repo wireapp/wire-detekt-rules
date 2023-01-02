@@ -12,12 +12,17 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.22.0")
+    // Note: do not upgrade to >1.19.0, it breaks the build
+    compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.19.0")
 
-    testImplementation("io.gitlab.arturbosch.detekt:detekt-test:1.22.0")
+    testImplementation("io.gitlab.arturbosch.detekt:detekt-test:1.19.0")
     testImplementation("junit:junit:4.13.2")
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
+}
+
+tasks.withType<Jar> {
+    archiveName = "detekt-rules.jar"
 }

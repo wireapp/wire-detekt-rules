@@ -1,16 +1,12 @@
 package com.wire.detekt.rules
 
-import io.gitlab.arturbosch.detekt.api.Config
-import io.gitlab.arturbosch.detekt.api.Debt
-import io.gitlab.arturbosch.detekt.api.Issue
-import io.gitlab.arturbosch.detekt.api.Rule
-import io.gitlab.arturbosch.detekt.api.Severity
+import io.gitlab.arturbosch.detekt.api.*
 import org.jetbrains.kotlin.psi.KtAnnotationEntry
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtClassOrObject
 import org.jetbrains.kotlin.psi.KtEnumEntry
 import org.jetbrains.kotlin.psi.psiUtil.getValueParameters
-import org.jetbrains.kotlin.resolve.calls.util.getValueArgumentsInParentheses
+import org.jetbrains.kotlin.resolve.calls.callUtil.getValueArgumentsInParentheses
 
 @Suppress("NestedBlockDepth")
 class EnforceSerializableFields(config: Config = Config.empty) : Rule(config) {
