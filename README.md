@@ -82,3 +82,19 @@ dependencies {
     }
 }
 ```
+
+and disabling the cache as follows:
+
+```
+configurations {
+    all {
+        resolutionStrategy {
+            eachDependency { DependencyResolveDetails details ->
+                if (requested.group == "com.wire" && requested.name == "detekt-rules") {
+                    cacheChangingModulesFor(0, "SECONDS") // disable cache for jar dependency
+                }
+            }
+        }
+    }
+}
+```
