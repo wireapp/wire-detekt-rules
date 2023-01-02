@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.wire"
-version = "latest"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -24,5 +24,5 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Jar> {
-    archiveName = "detekt-rules.jar"
+    archiveName = "${rootProject.name}-${version}.jar"
 }
