@@ -27,13 +27,13 @@ class DocumentedPublicUseCases(config: Config = Config.empty) : Rule(config) {
 
     private fun hasDocumentation(kClass: KtClassOrObject) =
         kClass.docComment?.getAllSections()?.firstOrNull()?.getContent() != null ||
-                kClass.body?.functions?.firstOrNull { it.name == "invoke" }?.docComment?.getAllSections()?.firstOrNull()
-                    ?.getContent() != null
+            kClass.body?.functions?.firstOrNull { it.name == "invoke" }?.docComment?.getAllSections()?.firstOrNull()
+            ?.getContent() != null
 
     private fun isClassAPublicUseCase(kClass: KtClassOrObject) =
-        kClass.fqName?.asString().orEmpty().contains("com.wire.kalium.logic.feature")
-                && kClass.fqName?.shortName()?.asString().orEmpty().endsWith("UseCase", ignoreCase = true)
-                && kClass.isPublic
+        kClass.fqName?.asString().orEmpty().contains("com.wire.kalium.logic.feature") &&
+            kClass.fqName?.shortName()?.asString().orEmpty().endsWith("UseCase", ignoreCase = true) &&
+            kClass.isPublic
 
     companion object {
         private const val DEBT_IN_MINUTES_PER_MISSING_ANNOTATION = 1

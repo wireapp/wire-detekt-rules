@@ -29,9 +29,9 @@ class EnforceSerializableFields(config: Config = Config.empty) : Rule(config) {
                     if (!hasMatchingRequirement) {
                         report(
                             kClass,
-                            "The Serializable class '${kClass.name}' declares "
-                                    + "a field '${annotatedValue.name}' without proper Serializable annotation "
-                                    + "'@SerialName | @Serializable | @Transient'."
+                            "The Serializable class '${kClass.name}' declares " +
+                                    "a field '${annotatedValue.name}' without proper Serializable annotation " +
+                                    "'@SerialName | @Serializable | @Transient'."
                         )
                     }
                 }
