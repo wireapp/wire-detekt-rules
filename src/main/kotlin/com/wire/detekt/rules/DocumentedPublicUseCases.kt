@@ -36,6 +36,6 @@ class DocumentedPublicUseCases(config: Config = Config.empty) : Rule(config) {
             kClass.isPublic
 
     companion object {
-        private const val DEBT_IN_MINUTES_PER_MISSING_ANNOTATION = 1
+        private const val DEBT_IN_MINUTES_PER_MISSING_ANNOTATION = 5
     }
 }
