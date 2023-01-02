@@ -44,7 +44,7 @@ dependencies {
 
 ## Option 2:
 
-1. In your project's `build.gradle.kts` file, configure a new Ivy Repository (with this you can just point to a plain jar file and simulte a package artifactory), you can do it by just copy-pasting the following snippet:
+1. In your project's `build.gradle.kts` file, configure a new Ivy repository (with this you can just point to a plain jar file and simulate a package artifactory), you can do it by just copy-pasting the following snippet:
 
 Typically your root `build.gradle.kts`
 ```
@@ -67,9 +67,9 @@ repositories {
 2. Add the detektPlugin as follow, since we have a regular artifact dependency, we can use gradle artifact coordinates:
 
 ```
-    dependencies {
-        detektPlugins("com.wire:detekt-rules:1.0.0-SNAPSHOT")
-    }
+dependencies {
+    detektPlugins("com.wire:detekt-rules:1.0.0-SNAPSHOT")
+}
 ```
 
 3. Optional, you can force, for local environments to always get the latest -and only one- version of the project, as we are not yet(?) handling versioning for this utility library. Gradle by default, caches versions for [24 hours](https://docs.gradle.org/current/userguide/dynamic_versions.html#sec:controlling_dependency_caching_programmatically), if you are making changes in these rules, and want to test faster, you can enforce/disable cache by:
