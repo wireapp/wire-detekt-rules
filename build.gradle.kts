@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.20"
+    `maven-publish`
 }
 
 group = "com.wire"
@@ -25,4 +26,12 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Jar> {
     archiveName = "${rootProject.name}-${version}.jar"
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
 }
