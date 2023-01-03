@@ -13,7 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        token: ${{ secrets.ARTIFACT_DEPLOY_KEY }}
+        with:
+          token: ${{ secrets.ARTIFACT_DEPLOY_KEY }}
 
       - name: Set up JDK
         uses: actions/setup-java@v3
