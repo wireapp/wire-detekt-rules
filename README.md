@@ -62,7 +62,7 @@ dependencies {
 1. In your project's `build.gradle.kts` file, configure a new Ivy repository (with this you can just point to a plain
    jar file and simulate a package artifactory), you can do it by just copy-pasting the following snippet:
 
-Typically your root `build.gradle.kts`
+Typically, your root `build.gradle.kts`
 
 ```
 repositories {
@@ -81,7 +81,7 @@ repositories {
 }
 ```
 
-2. Add the detektPlugin as follow, since we have a regular artifact dependency, we can use gradle artifact coordinates:
+2. Add the detektPlugin as follows, since we have a regular artifact dependency, we can use gradle artifact coordinates:
 
 ```
 dependencies {
@@ -98,7 +98,7 @@ Add this parameter to enforce SNAPSHOT default behavior like a regular m2 artifa
 ```
 dependencies {
     detektPlugins("com.wire:detekt-rules:1.0.0-SNAPSHOT") {
-        changing(true) // tells gradle that this is a dynamic version, will try to get a new one using default gradle cache behavior.
+        isChanging = true // tells gradle that this is a dynamic version, will try to get a new one using default gradle cache behavior.
     }
 }
 ```
