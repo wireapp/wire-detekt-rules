@@ -1,22 +1,24 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.20"
+    kotlin("jvm") version "1.9.23"
     `maven-publish`
 }
 
+val detektVersion = "1.23.6"
 group = "com.wire"
-version = "1.0.0-SNAPSHOT"
+// Version is composed of: rules version + detekt version used to build it.
+// This way we can build new versions in case of breaking changes within Detekt
+version = "1.0.0-$detektVersion"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    // Note: do not upgrade to >1.19.0, it breaks the build
-    compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.19.0")
+    compileOnly("io.gitlab.arturbosch.detekt:detekt-api:$detektVersion")
 
-    testImplementation("io.gitlab.arturbosch.detekt:detekt-test:1.19.0")
+    testImplementation("io.gitlab.arturbosch.detekt:detekt-test:$detektVersion")
     testImplementation("junit:junit:4.13.2")
 }
 

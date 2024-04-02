@@ -37,9 +37,9 @@ express prior written consent of Wire Swiss GmbH.
 
 First, make sure to add Detekt to your project:
 
-```
+```kotlin
 plugins {
-    id("io.gitlab.arturbosch.detekt").version("1.19.0")
+    id("io.gitlab.arturbosch.detekt").version("1.23.6")
 }
 ```
 
@@ -51,7 +51,7 @@ Then to add these set of rules, you have 2 options depending on your needs and l
 2. In your project folder, create a `detekt` folder and paste the jar file there.
 3. Navigate to the `build.gradle.kts` file where you configured detekt, and add the jar file as dependency:
 
-```
+```kotlin
 dependencies {
     detektPlugins(files("$rootDir/detekt/detekt-rules-1.0.0-SNAPSHOT.jar"))
 }
@@ -64,7 +64,7 @@ dependencies {
 
 Typically, your root `build.gradle.kts`
 
-```
+```kotlin
 repositories {
     val repo = ivy("https://raw.githubusercontent.com/wireapp/wire-detekt-rules/main/dist") {
         patternLayout {
@@ -95,9 +95,9 @@ dependencies {
 
 Add this parameter to enforce SNAPSHOT default behavior like a regular m2 artifact.
 
-```
+```kotlin
 dependencies {
-    detektPlugins("com.wire:detekt-rules:1.0.0-SNAPSHOT") {
+    detektPlugins("com.wire:detekt-rules:1.0.0-1.23.6") {
         isChanging = true // tells gradle that this is a dynamic version, will try to get a new one using default gradle cache behavior.
     }
 }
@@ -109,7 +109,7 @@ When you are adding new rules to the project RuleSet, you can use the `./gradlew
 project locally and test your changes.
 You just need to declare `mavenLocal()` as a repository in your project's `build.gradle.kts` file:
 
-```
+```kotlin
 repositories {
     mavenLocal()
     // other repositories omitted

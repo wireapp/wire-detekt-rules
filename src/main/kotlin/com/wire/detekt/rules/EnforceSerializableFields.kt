@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtClassOrObject
 import org.jetbrains.kotlin.psi.KtEnumEntry
 import org.jetbrains.kotlin.psi.psiUtil.getValueParameters
-import org.jetbrains.kotlin.resolve.calls.callUtil.getValueArgumentsInParentheses
+import org.jetbrains.kotlin.resolve.calls.util.getValueArgumentsInParentheses
 
 @Suppress("NestedBlockDepth")
 class EnforceSerializableFields(config: Config = Config.empty) : Rule(config) {
