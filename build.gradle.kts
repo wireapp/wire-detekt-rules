@@ -1,18 +1,20 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version "2.0.0"
     `maven-publish`
 }
 
-val detektVersion = "1.23.6"
+val detektVersion = "main-SNAPSHOT"
 group = "com.wire"
 // Version is composed of: rules version + detekt version used to build it.
 // This way we can build new versions in case of breaking changes within Detekt
-version = "1.0.0-$detektVersion"
+version = "2.0.0-$detektVersion"
 
 repositories {
     mavenCentral()
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
 }
 
 dependencies {
@@ -22,12 +24,14 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
 }
 
 tasks.withType<Jar> {
-    archiveName = "${rootProject.name}-${version}.jar"
+    archiveFileName.set("${rootProject.name}-${archiveVersion.get()}.jar")
 }
 
 publishing {

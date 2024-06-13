@@ -1,6 +1,7 @@
 package com.wire.detekt.rules
 
-import io.gitlab.arturbosch.detekt.api.*
+import io.gitlab.arturbosch.detekt.api.Config
+import io.gitlab.arturbosch.detekt.api.Rule
 import org.jetbrains.kotlin.psi.KtAnnotationEntry
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtClassOrObject
@@ -9,14 +10,10 @@ import org.jetbrains.kotlin.psi.psiUtil.getValueParameters
 import org.jetbrains.kotlin.resolve.calls.util.getValueArgumentsInParentheses
 
 @Suppress("NestedBlockDepth")
-class EnforceSerializableFields(config: Config = Config.empty) : Rule(config) {
-
-    override val issue: Issue = Issue(
-        id = javaClass.simpleName,
-        severity = Severity.Style,
-        description = "Use Serializable annotations on every field of the Class that use @Serializable.",
-        debt = Debt(mins = DEBT_IN_MINUTES_PER_MISSING_ANNOTATION)
-    )
+class EnforceSerializableFields(config: Config = Config.empty) : Rule(
+    config = config,
+    description = "Use Serializable annotations on every field of the Class that use @Serializable."
+) {
 
     override fun visitClassOrObject(kClass: KtClassOrObject) {
         for (ktAnnotationEntry in kClass.annotationEntries) {
@@ -51,7 +48,6 @@ class EnforceSerializableFields(config: Config = Config.empty) : Rule(config) {
                 ktAnnotationEntry.getValueArgumentsInParentheses().isEmpty()
 
     companion object {
-        private const val DEBT_IN_MINUTES_PER_MISSING_ANNOTATION = 3
         private const val SERIALIZABLE_CLASS_ANNOTATION = "@Serializable"
     }
 }
