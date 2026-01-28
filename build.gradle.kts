@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
 }
 
-val detektVersion = "main-SNAPSHOT"
+val detektVersion = "1.23.8"
 group = "com.wire"
 // Version is composed of: rules version + detekt version used to build it.
 // This way we can build new versions in case of breaking changes within Detekt
