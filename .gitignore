@@ -119,3 +119,4 @@ gradle-app.setting
 # idea
 .idea/
 .out/
+local.properties
