@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ZENKINS_WORKFLOW_PAT }}
 
       - name: Set up JDK
         uses: actions/setup-java@v4
