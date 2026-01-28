@@ -21,13 +21,22 @@ dependencies {
     compileOnly("io.gitlab.arturbosch.detekt:detekt-api:$detektVersion")
 
     testImplementation("io.gitlab.arturbosch.detekt:detekt-test:$detektVersion")
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(kotlin("test"))
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_17)
     }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.withType<Jar> {
