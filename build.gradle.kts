@@ -8,9 +8,8 @@ plugins {
 
 val detektVersion = "1.23.8"
 group = "com.wire"
-// Version is composed of: rules version + detekt version used to build it.
-// This way we can build new versions in case of breaking changes within Detekt
-version = "2.0.0-$detektVersion"
+// Version is passed from CI via -Pversion=<tag>, or defaults to detekt version for local builds
+version = findProperty("version")?.takeIf { it != "unspecified" } ?: detektVersion
 
 repositories {
     mavenCentral()

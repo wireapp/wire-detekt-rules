@@ -29,8 +29,12 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/actions/wrapper-validation@v5
 
+      - name: Generate version
+        id: version
+        run: echo "VERSION=$(date '+%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+
       - name: Create a new artifact version
-        run: ./gradlew jar
+        run: ./gradlew jar -Pversion=${{ steps.version.outputs.VERSION }}
 
       - name: Copy artifact to publish directory
         run: cp build/libs/*.jar dist/
@@ -39,12 +43,11 @@ jobs:
         run: |
           git config --global user.name 'zebot'
           git config --global user.email 'zebot@users.noreply.github.com'
-          NEW_TAG_VERSION=v$(date '+%Y%m%d-%H%M%S')
           git add dist/*
           git diff-index --quiet HEAD || git commit -m "chore: updating artifact [skip ci]"
           git push
-          git tag $NEW_TAG_VERSION
-          git push origin $NEW_TAG_VERSION
+          git tag v${{ steps.version.outputs.VERSION }}
+          git push origin v${{ steps.version.outputs.VERSION }}
 
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
