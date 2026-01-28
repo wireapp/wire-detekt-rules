@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --global user.name 'zebot'
           git config --global user.email 'zebot@users.noreply.github.com'
-          NEW_TAG_VERSION=v$(date '+%Y%m%d')
+          NEW_TAG_VERSION=v$(date '+%Y%m%d-%H%M%S')
           git add dist/*
           git diff-index --quiet HEAD || git commit -m "chore: updating artifact [skip ci]"
           git push
