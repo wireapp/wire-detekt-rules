@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ZENKINS_WORKFLOW_PAT }}
+          token: ${{ secrets.ARTIFACT_DEPLOY_KEY }}
 
       - name: Set up JDK
         uses: actions/setup-java@v4
