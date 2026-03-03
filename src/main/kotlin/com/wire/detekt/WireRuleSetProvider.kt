@@ -1,6 +1,7 @@
 package com.wire.detekt
 
 import com.wire.detekt.rules.DaoFlowOnRule
+import com.wire.detekt.rules.DaoSuspendFlowReturnRule
 import com.wire.detekt.rules.DocumentedPublicUseCases
 import com.wire.detekt.rules.EnforceSerializableFields
 import io.gitlab.arturbosch.detekt.api.Config
@@ -20,6 +21,7 @@ class WireRuleSetProvider : RuleSetProvider {
             EnforceSerializableFields(config),
             DocumentedPublicUseCases(config),
             DaoFlowOnRule(config),
+            DaoSuspendFlowReturnRule(config),
         )
     )
 }
