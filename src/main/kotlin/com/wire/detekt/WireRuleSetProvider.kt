@@ -4,6 +4,7 @@ import com.wire.detekt.rules.DaoFlowOnRule
 import com.wire.detekt.rules.DaoSuspendFlowReturnRule
 import com.wire.detekt.rules.DocumentedPublicUseCases
 import com.wire.detekt.rules.EnforceSerializableFields
+import com.wire.detekt.rules.PublicUseCaseSuspendFlowReturnRule
 import io.gitlab.arturbosch.detekt.api.Config
 import io.gitlab.arturbosch.detekt.api.RuleSet
 import io.gitlab.arturbosch.detekt.api.RuleSetProvider
@@ -22,6 +23,7 @@ class WireRuleSetProvider : RuleSetProvider {
             DocumentedPublicUseCases(config),
             DaoFlowOnRule(config),
             DaoSuspendFlowReturnRule(config),
+            PublicUseCaseSuspendFlowReturnRule(config),
         )
     )
 }
